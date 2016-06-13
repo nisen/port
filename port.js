@@ -1,15 +1,23 @@
-var SerialPort = require('C:/Program Files/nodejs/node_modules/serialport').SerialPort;
-var port = new SerialPort('com3',{ baudrate: 9600});
+var serialPort = require('C:/Program Files/nodejs/node_modules/serialport').SerialPort;
+var port = new serialPort('com3',{ baudrate: 9600});
 
-port.on('open', function() {
-    port.write('w',function(){
-        console.log('sds');
+port.on('open', function () {
+    port.write('w', function(err, bytesWritten) {
+        if (err) {
+            return console.log('Error: ', err.message);
+        }
+        console.log(bytesWritten, 'bytes written');
+        port.drain();
     });
 });
 
 port.on('data', function (data) {
-    console.log('Data: ' + data);
+    console.log(data);
 });
+
+
+
+
 
 
 
