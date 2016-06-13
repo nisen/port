@@ -1,13 +1,24 @@
 var SerialPort = require('C:/Program Files/nodejs/node_modules/serialport').SerialPort;
-var port = new SerialPort('com3');
-// port.close();
-// port.open();
+var port = new SerialPort('com3',{ baudrate: 9600});
 
 port.on('open', function() {
-    port.write('a', function(f) {
-        console.log(f);
+    port.write('w',function(){
+        console.log('sds');
     });
 });
+
+port.on('data', function (data) {
+    console.log('Data: ' + data);
+});
+
+
+
+
+
+
+
+
+
 
 
 
