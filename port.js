@@ -1,5 +1,5 @@
 var readline = require('readline');
-var serialPort = require('C:/Program Files/nodejs/node_modules/serialport').SerialPort;
+var serialPort = require('serialport').SerialPort;
 var port = new serialPort('com3',{ baudrate: 9600});
 var rl = readline.createInterface({
     input: process.stdin,
