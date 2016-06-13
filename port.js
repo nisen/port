@@ -5,129 +5,28 @@ var rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-
+var arr=["w","a","s","d","z","x","u","i","j","k"];
+// var arr="wasdzxuijk";
 rl.setPrompt('> ');
+console.log('输入 help 查看操作');
 rl.prompt();
 
 rl.on('line', function (cmd) {
-    if(cmd =='w'){
-        w();
-    }else if(cmd == 's'){
-        s();
-    }else if(cmd == 'a'){
-        a();
-    }else if(cmd == 'd'){
-        d();
-    }else if(cmd == 'u'){
-        u();
-    }else if(cmd == 'i'){
-        i();
-    }else if(cmd == 'j'){
-        j();
-    }else if(cmd == 'k'){
-        k();
-    }else if(cmd == 'x'){
-        x();
-    }else if(cmd == 'z'){
-        z();
-    }else if(cmd == 'help'){
+    if(cmd=='help'){
         help();
+    }else if(arr.indexOf(cmd) != -1){
+        input(cmd);
     }else{
-        console.log('输入 help 查看操作');
         rl.prompt();
     }
 });
 
-
-function w(){
-    port.write('w', function(err, bytesWritten) {
+function input(cmd){
+    port.write('cmd', function(err) {
         if (err) {
             return console.log('Error: ', err.message);
         }
-        console.log(bytesWritten, 'bytes written');
         port.drain();
-        rl.prompt();
-    });
-}function s(){
-    port.write('s', function(err, bytesWritten) {
-        if (err) {
-            return console.log('Error: ', err.message);
-        }
-        console.log(bytesWritten, 'bytes written');
-        port.drain();
-        rl.prompt();
-    });
-}function a(){
-    port.write('a', function(err, bytesWritten) {
-        if (err) {
-            return console.log('Error: ', err.message);
-        }
-        console.log(bytesWritten, 'bytes written');
-        port.drain();
-        rl.prompt();
-    });
-}function d(){
-    port.write('d', function(err, bytesWritten) {
-        if (err) {
-            return console.log('Error: ', err.message);
-        }
-        console.log(bytesWritten, 'bytes written');
-        port.drain();
-        rl.prompt();
-    });
-}function u(){
-    port.write('u', function(err, bytesWritten) {
-        if (err) {
-            return console.log('Error: ', err.message);
-        }
-        console.log(bytesWritten, 'bytes written');
-        port.drain();
-        rl.prompt();
-    });
-}function i(){
-    port.write('i', function(err, bytesWritten) {
-        if (err) {
-            return console.log('Error: ', err.message);
-        }
-        console.log(bytesWritten, 'bytes written');
-        port.drain();
-        rl.prompt();
-    });
-}function j(){
-    port.write('j', function(err, bytesWritten) {
-        if (err) {
-            return console.log('Error: ', err.message);
-        }
-        console.log(bytesWritten, 'bytes written');
-        port.drain();
-        rl.prompt();
-    });
-}function k(){
-    port.write('k', function(err, bytesWritten) {
-        if (err) {
-            return console.log('Error: ', err.message);
-        }
-        console.log(bytesWritten, 'bytes written');
-        port.drain();
-        rl.prompt();
-    });
-}function x(){
-    port.write('x', function(err, bytesWritten) {
-        if (err) {
-            return console.log('Error: ', err.message);
-        }
-        console.log(bytesWritten, 'bytes written');
-        port.drain();
-        rl.prompt();
-    });
-}function z(){
-    port.write('z', function(err, bytesWritten) {
-        if (err) {
-            return console.log('Error: ', err.message);
-        }
-        console.log(bytesWritten, 'bytes written');
-        port.drain();
-        rl.prompt();
     });
 }
 
@@ -139,7 +38,7 @@ function help(){
 }
 
 port.on('data', function (data) {
-    console.log(data);
+    console.log(data.toString());
     rl.prompt();
 });
 
