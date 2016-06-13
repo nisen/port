@@ -22,7 +22,7 @@ rl.on('line', function (cmd) {
 });
 
 function input(cmd){
-    port.write('cmd', function(err) {
+    port.write(cmd, function(err) {
         if (err) {
             return console.log('Error: ', err.message);
         }
